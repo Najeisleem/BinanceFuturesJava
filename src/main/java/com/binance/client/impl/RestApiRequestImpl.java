@@ -1110,9 +1110,9 @@ class RestApiRequestImpl {
 
         request.jsonParser = (jsonWrapper -> {
             List<Order> result = new LinkedList<>();
-            System.out.println("jsonWrapper ---> "+jsonWrapper.getJson());
-            JsonWrapperArray dataArray = jsonWrapper.getJsonArray("data");
-            dataArray.forEach((item) -> {
+            System.out.println("jsonWrapper ---> "+jsonWrapper.getJson().get("data"));
+            ArrayList<Map<String, Object>> array = (ArrayList<Map<String, Object>>) jsonWrapper.getJson().get("data");
+            array.forEach((item) -> {
                 Order o = new Order();
                 o.setClientOrderId(jsonWrapper.getString("clientOrderId"));
                 o.setCumQty(jsonWrapper.getBigDecimal("cumQty"));
