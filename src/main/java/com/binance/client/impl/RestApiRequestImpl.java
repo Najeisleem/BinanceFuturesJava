@@ -1110,6 +1110,7 @@ class RestApiRequestImpl {
 
         request.jsonParser = (jsonWrapper -> {
             List<Order> result = new LinkedList<>();
+            System.out.println("jsonWrapper ---> "+jsonWrapper);
             JsonWrapperArray dataArray = jsonWrapper.getJsonArray("data");
             dataArray.forEach((item) -> {
                 Order o = new Order();
