@@ -1107,16 +1107,13 @@ class RestApiRequestImpl {
                 .putToUrl("symbol", symbol);
 
         request.request = createRequestByGetWithSignature("/fapi/v1/openOrders", builder);
-
         request.jsonParser = (jsonWrapper -> {
             List<Order> result = new LinkedList<>();
-            System.out.println("jsonWrapper ---> "+jsonWrapper.getJson());
             JsonWrapperArray dataArray = jsonWrapper.getJsonArray("data");
             dataArray.forEach((item) -> {
             	System.out.println("item --->"+item);
                 Order o = new Order();
                 o.setClientOrderId(item.getString("clientOrderId"));
-                o.setCumQty(item.getBigDecimal("cumQty"));
                 o.setCumQuote(item.getBigDecimal("cumQuote"));
                 o.setExecutedQty(item.getBigDecimal("executedQty"));
                 o.setOrderId(item.getLong("orderId"));
@@ -1143,6 +1140,7 @@ class RestApiRequestImpl {
                 o.setWorkingType(item.getString("workingType"));
                 o.setPriceProtect(item.getBoolean("priceProtect"));
                 result.add(o);
+
             });
             return result;
         });
