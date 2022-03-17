@@ -1332,6 +1332,7 @@ class RestApiRequestImpl {
                 element.setIsolatedMargin(item.getString("isolatedMargin"));
                 element.setPositionSide(item.getString("positionSide"));
                 element.setUnrealizedProfit(item.getBigDecimal("unRealizedProfit"));
+                element.setNotional(item.getBigDecimal("notional"));
                 result.add(element);
             });
             return result;
