@@ -31,8 +31,17 @@ public class PositionRisk {
 
     private String positionSide;
 
+    private BigDecimal notional;
 
-    public Boolean getAutoAddMargin() {
+    public BigDecimal getNotional() {
+		return notional;
+	}
+
+	public void setNotional(BigDecimal notional) {
+		this.notional = notional;
+	}
+
+	public Boolean getAutoAddMargin() {
         return isAutoAddMargin;
     }
 
@@ -136,6 +145,7 @@ public class PositionRisk {
                 .append("liquidationPrice", liquidationPrice).append("markPrice", markPrice)
                 .append("maxNotionalValue", maxNotionalValue).append("positionAmt", positionAmt)
                 .append("symbol", symbol).append("unrealizedProfit", unrealizedProfit)
+                .append("notional",notional)
                 .append("positionSide", positionSide).toString();
     }
 }
