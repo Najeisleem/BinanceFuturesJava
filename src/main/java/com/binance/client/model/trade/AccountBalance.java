@@ -15,11 +15,19 @@ public class AccountBalance {
     private BigDecimal maxWithdrawAmount;
     private BigDecimal crossWalletBalance;
     private BigDecimal availableBalance;
-
-
     private BigDecimal crossUnPnl;
+    private BigDecimal marginBalance;
+    
+    
+    public BigDecimal getMarginBalance() {
+		return marginBalance;
+	}
 
-    public String getAccountAlias() {
+	public void setMarginBalance(BigDecimal marginBalance) {
+		this.marginBalance = marginBalance;
+	}
+
+	public String getAccountAlias() {
         return accountAlias;
     }
 
@@ -78,6 +86,6 @@ public class AccountBalance {
     @Override
     public String toString() {
         return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE).append("asset", asset)
-                .append("balance", balance).append("withdrawAvailable", maxWithdrawAmount).toString();
+                .append("balance", balance).append("withdrawAvailable", maxWithdrawAmount).append("marginBalance",marginBalance).toString();
     }
 }
