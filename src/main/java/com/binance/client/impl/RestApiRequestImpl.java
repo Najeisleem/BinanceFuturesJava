@@ -1151,9 +1151,6 @@ class RestApiRequestImpl {
         RestApiRequest<List<Order>> request = new RestApiRequest<>();
         UrlParamsBuilder builder = UrlParamsBuilder.build()
                 .putToUrl("symbol", symbol)
-                .putToUrl("orderId", orderId)
-                .putToUrl("startTime", startTime)
-                .putToUrl("endTime", endTime)
                 .putToUrl("limit", limit);
         request.request = createRequestByGetWithSignature("/fapi/v1/allOrders", builder);
 
