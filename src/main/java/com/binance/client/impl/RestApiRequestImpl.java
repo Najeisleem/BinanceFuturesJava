@@ -210,10 +210,10 @@ class RestApiRequestImpl {
                 symbol.setQuotePrecision(item.getLong("quotePrecision"));
                 symbol.setOrderTypes(item.getJsonArray("orderTypes").convert2StringList());
                 symbol.setTimeInForce(item.getJsonArray("orderTypes").convert2StringList());
-                List<List<Map<String, String>>> valList = new LinkedList<>();
-                JsonWrapperArray valArray = item.getJsonArray("filters");
+                List<Map<String, String>> valList = new LinkedList<>();
+                 JsonWrapperArray valArray = item.getJsonArray("filters");
                 valArray.forEach((val) -> {
-                    valList.add(val.convert2DictList());
+                    valList.add(val.convert2DictList().get(0));
                 });
                 symbol.setFilters(valList);
                 symbolList.add(symbol);
